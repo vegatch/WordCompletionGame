@@ -2,14 +2,14 @@
 //--------------personal code -----------
 //--------------Random text to complete game
 let fruits = [
-    // "Apple",
-    // "Orange",
-    // "Mango",
-    // "Banana",
-    // "Cherry",
-    // "Pineapple",
-    // "Blueberry",
-    // "Lemon",
+    "Apple",
+    "Orange",
+    "Mango",
+    "Banana",
+    "Cherry",
+    "Pineapple",
+    "Blueberry",
+    "Lemon",
     "Orange"
 ];
 
@@ -61,26 +61,35 @@ isIndex(stringCtrl, userInput)
 console.log('from isIndex', isIndex(stringCtrl, userInput));
 
 
-if(isIndex !== -1){
-   // userInput = prompt('what is your guess?')
-    myArray[isIndex(stringCtrl, userInput)] = userInput
-}else{
-    alert('KISS')
-}
-console.log('from myArray', myArray)
+// if(isIndex !== -1){
+//    // userInput = prompt('what is your guess?')
+//     myArray[isIndex(stringCtrl, userInput)] = userInput
+// }else{
+//     alert('KISS')
+// }
+// console.log('from myArray', myArray)
 
 let createArray = function(){
-    myArray =[];
-    let position = isIndex(stringLastArray, userInput);
-    for(let i=0; myArray !== stringLastArray; i += 1){
-        userInput = prompt('what is your guess')
-        if(isIndex !== -1){
-            myArray[isIndex(stringCtrl, userInput)] = userInput
+   let newArray =[];
+    let position = isIndex(stringLast, userInput);
+    //console.log(position);
+    while(stringLastArray !== null){
+        myArray =[];
+        userInput = prompt('what is your guess?').toLocaleLowerCase();
+        if(userInput !== null){
+            if(isIndex(stringLast, userInput) !== -1){
+                myArray[position] += userInput
+                stringLastArray.splice(position, 1)
+            }else{
+                alert('Try again, not part of my string')
+            }
         }else{
-            alert('KISS')
+            alert('Game over')
         }
-        return myArray;     
+        
+       newArray = myArray;     
         
     }
+    return newArray;
 }
-createArray();
+console.log(createArray());
